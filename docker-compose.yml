@@ -1,0 +1,32 @@
+version: "3"
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: nginx/Dockerfile
+    ports: 
+      - "80:80"
+    networks:
+      - internal
+    volumes:
+      - ../:/var/www/html
+      - ./nginx/log/:/var/log/nginx
+  php:
+    build:
+      context: .
+      dockerfile: php/Dockerfile
+    # ports: 
+      # - "9003:9003"
+    networks:
+      - internal
+    volumes:
+      - ../:/var/www/html
+      - ./php/log/:/alidata/log/php
+networks:
+  internal:
+    driver: bridge
+    ipam:
+      driver: default
+      config:
+        - subnet: 172.30.0.0/16
+        # - gateway: 172.30.0.1
