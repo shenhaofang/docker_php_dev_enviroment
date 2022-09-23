@@ -101,3 +101,4 @@
 2022/04/07 06:32:29 [notice] 1#1: worker process 35 exited with code 0
 2022/04/07 06:32:29 [notice] 1#1: exit
 2022/04/07 08:24:18 [emerg] 1#1: host not found in upstream "php" in /etc/nginx/conf.d/vhosts/api.conf:12
+2022/08/01 06:16:15 [emerg] 1#1: host not found in upstream "php" in /etc/nginx/conf.d/vhosts/api.conf:12
