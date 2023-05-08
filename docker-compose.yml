@@ -15,8 +15,9 @@ services:
     build:
       context: .
       dockerfile: php/Dockerfile
-    # ports: 
-      # - "9003:9003"
+    ports: 
+      - "9005:9005"
+      # - "22:22"
     networks:
       - internal
     volumes:
@@ -28,5 +29,5 @@ networks:
     ipam:
       driver: default
       config:
-        - subnet: 172.50.0.0/16
-        # - gateway: 172.30.0.1
+        - subnet: 172.27.0.0/16
+        # - gateway: 172.27.0.1
