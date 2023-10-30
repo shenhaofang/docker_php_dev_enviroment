@@ -41,7 +41,7 @@ RUN sed -i "s/dl-cdn.alpinelinux.org/mirrors.aliyun.com/g" /etc/apk/repositories
     libevent-dev \
     git \
     libmemcached \
-    libmemcached-dev \
+    libmemcached-dev 
     # Lightweight ssh client to ensure low-cost services communications
     # dropbear-ssh \
     # openssh \
@@ -58,11 +58,13 @@ RUN set -xe \
     openrc 
 RUN php -r "copy('https://install.phpcomposer.com/installer', 'composer-setup.php');" \
     && php composer-setup.php \
+    && mv composer.phar /usr/local/bin/composer \
+    && php composer-setup.php --1 \
     && php -r "unlink('composer-setup.php');" \
-    && mv composer.phar /usr/local/bin/composer
+    && mv composer.phar /usr/local/bin/composer1
 RUN pecl install redis \
     # && pecl install mcrypt\
-    && pecl install xdebug \
+    && pecl install xdebug-3.1.5 \
     # && pecl install nsq \
     && pecl install mongodb \
     # && pecl install imagick \
